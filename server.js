@@ -13,15 +13,16 @@ app.use(helmet())
 
 app.use((function validateBearerToken(req, res, next){
     const apiToken = process.env.API_TOKEN
-    const authToken = req.get('Authorization')
-    console.log('validate bearer token middleware')
-    if(!authToken || authToken.split(' ')[1] !== apiToken){
+    let authToken = req.get('Authorization')
+    if(authToken.split(' ')[0] == 'Bearer'){
+        authToken = authToken.split(' ')[1];
+    }
+    if(!authToken || authToken !== apiToken){
         return res.status(401).json({ error: 'Unauthorized request'})
     }
     //move to the next
     next()
 }));
-
 
 //1. The endpoint is GET /movie
 //2. The search options for either name or type are provided in query string parameters.
@@ -52,7 +53,7 @@ function handleGetMovies(req, res){
     res.json(results)
 }
 
-app.get('/movies', handleGetMovies)
+app.get('/movie', handleGetMovies)
 
 const PORT = 8000
 
