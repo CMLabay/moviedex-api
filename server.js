@@ -7,7 +7,7 @@ const cors = require('cors')
 
 const app = express()
 
-const morganSetting = process.send.NODE_ENV === 'production' ? 'tiny' : 'common'
+const morganSetting = process.env.NODE_ENV === 'production' ? 'tiny' : 'common'
 app.use(morgan(morganSetting))
 app.use(cors())
 app.use(helmet())
