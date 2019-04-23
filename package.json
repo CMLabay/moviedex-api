@@ -13,6 +13,9 @@
     "url": "git+https://github.com/shhmavel/moviedex-api.git"
   },
   "keywords": [],
+  "engines": {
+    "node": "11.12.0"
+  },
   "author": "",
   "license": "ISC",
   "bugs": {
