@@ -51,7 +51,7 @@ app.get('/movie', handleGetMovies)
 
 app.use((error, req, res, next) => {
     let response
-    if(process.env.NODE_ENV === 'production'){
+    if (process.env.NODE_ENV === 'production'){
         response = { error: { message: 'server error' }}
     } else {
         response = { error }
@@ -59,7 +59,7 @@ app.use((error, req, res, next) => {
     res.status(500).json(response)
 })
 
-const PORT = process.send.PORT || 8000
+const PORT = process.end.PORT || 8000
 
 app.listen(PORT, () => {
     console.log(`Server listening at http://localhost:${PORT}`)
